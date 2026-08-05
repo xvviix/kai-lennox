@@ -61,6 +61,8 @@ Designed and developed as a portfolio-grade project by an award-winning creative
 
 ---
 
+**Live Website**: [https://xvviix.github.io/kai-lennox](https://xvviix.github.io/kai-lennox)
+
 **Note**: This repository contains a complete, standalone static site. To view it locally, simply open `index.html` in any modern browser.
 
 ---
