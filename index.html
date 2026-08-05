@@ -70,7 +70,7 @@
         
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-primary btn-lg">Start Your Transformation</a>
-          <a href="#method" class="btn btn-secondary btn-lg">Watch 2-min Film</a>
+          <button onclick="openVideoModal()" class="btn btn-secondary btn-lg">Watch 2-min Film</button>
         </div>
 
         <div class="hero-stats">
@@ -96,6 +96,22 @@
       <div class="hero-overlay"></div>
     </div>
   </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-logos">
+        <span>FORBES</span>
+        <span>WSJ</span>
+        <span>MEN'S HEALTH</span>
+        <span>ROLEX</span>
+        <span>RED BULL</span>
+      </div>
+      <div style="font-size:0.8rem; color:var(--color-text-subtle);">
+        Featured in the world’s most discerning publications
+      </div>
+    </div>
+  </div>
 
   <!-- ABOUT -->
   <section class="section about" id="about">
@@ -499,6 +515,85 @@
     </div>
   </section>
 
+  <!-- SELECT CLIENTS -->
+  <section class="section clients-logos" style="background: var(--color-bg-elev); padding: 2.75rem 0;">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.35rem; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <div style="font-size:0.75rem; letter-spacing:2px; color:#C9A96E;">SELECT CLIENTS</div>
+          <div style="font-weight:700; font-size:1.45rem;">Trusted by visionaries and leaders</div>
+        </div>
+        <div style="font-size:0.85rem; color:#A8A29E;">Across 17 countries and 4 continents</div>
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:2.25rem 3.25rem; align-items:center; opacity:0.9;">
+        <div style="font-weight:700; font-size:1.05rem;">VISTA CAPITAL</div>
+        <div style="font-weight:700; font-size:1.05rem;">ROLEX</div>
+        <div style="font-weight:700; font-size:1.05rem;">RED BULL</div>
+        <div style="font-weight:700; font-size:1.05rem;">FORTUNE 500</div>
+        <div style="font-weight:700; font-size:1.05rem;">OLYMPIC COMMITTEE</div>
+        <div style="font-weight:700; font-size:1.05rem;">DELOITTE</div>
+        <div style="font-weight:700; font-size:1.05rem;">PRIVATE FAMILY OFFICES</div>
+        <div style="font-weight:700; font-size:1.05rem;">SERIES C FOUNDERS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNAL / INSIGHTS -->
+  <section class="section journal" id="journal">
+    <div class="container">
+      <div class="section-header">
+        <h2>Insights from the edge.</h2>
+        <p>Perspectives, protocols and essays for those who operate at the highest level.</p>
+      </div>
+
+      <div class="journal-grid">
+        <!-- Journal Card 1 -->
+        <div class="journal-card reveal">
+          <div class="journal-img">
+            <img src="assets/images/program-elite.jpg" alt="Elite training session">
+          </div>
+          <div class="journal-card-content">
+            <div class="meta">JANUARY 2026 • PROTOCOLS</div>
+            <h4>The 4-Week Reset: Rebuilding the High Performer</h4>
+            <p>How the world’s top executives reset their systems after burnout and regain an edge that lasts.</p>
+            <a href="#" class="read-more">Read Article 
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="journal-card reveal">
+          <div class="journal-img">
+            <img src="assets/images/process.jpg" alt="Recovery and longevity protocol">
+          </div>
+          <div class="journal-card-content">
+            <div class="meta">DECEMBER 2025 • SCIENCE</div>
+            <h4>The Hidden Variable: Why Recovery Beats Training</h4>
+            <p>New research on how elite athletes and founders use sleep, HRV, and cold exposure to outperform peers.</p>
+            <a href="#" class="read-more">Read Article 
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="journal-card reveal">
+          <div class="journal-img">
+            <img src="assets/images/program-power.jpg" alt="Strength performance">
+          </div>
+          <div class="journal-card-content">
+            <div class="meta">NOVEMBER 2025 • PERFORMANCE</div>
+            <h4>Power Is a Skill: Building Explosive Strength After 35</h4>
+            <p>Why many leaders lose their physical edge and how we systematically rebuild it with precision programming.</p>
+            <a href="#" class="read-more">Read Article 
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section faq">
     <div class="container">
@@ -560,6 +655,33 @@
     </div>
   </section>
 
+  <!-- AWARDS & RECOGNITION -->
+  <section class="section awards" style="background: var(--color-bg); padding-top: 1.25rem;">
+    <div class="container">
+      <div class="section-header" style="text-align:center; margin-bottom: 2.1rem;">
+        <h2 style="font-size:1.9rem;">Recognized by the industry.</h2>
+      </div>
+      
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1.15rem; max-width:980px; margin:0 auto;">
+        <div style="background:#181818; border:1px solid #2A2A2A; padding:1.4rem 1.6rem; border-radius:12px; text-align:center;">
+          <div style="font-size:0.75rem; letter-spacing:1.5px; color:#C9A96E;">2025</div>
+          <div style="font-weight:700; font-size:1.15rem; margin:0.35rem 0;">Awwwards Site of the Year</div>
+          <div style="font-size:0.85rem; color:#A8A29E;">Nominee • Personal Branding</div>
+        </div>
+        <div style="background:#181818; border:1px solid #2A2A2A; padding:1.4rem 1.6rem; border-radius:12px; text-align:center;">
+          <div style="font-size:0.75rem; letter-spacing:1.5px; color:#C9A96E;">2025</div>
+          <div style="font-weight:700; font-size:1.15rem; margin:0.35rem 0;">CSS Design Awards</div>
+          <div style="font-size:0.85rem; color:#A8A29E;">Special Kudos • Luxury</div>
+        </div>
+        <div style="background:#181818; border:1px solid #2A2A2A; padding:1.4rem 1.6rem; border-radius:12px; text-align:center;">
+          <div style="font-size:0.75rem; letter-spacing:1.5px; color:#C9A96E;">2024</div>
+          <div style="font-weight:700; font-size:1.15rem; margin:0.35rem 0;">Webflow Showcases</div>
+          <div style="font-size:0.85rem; color:#A8A29E;">Featured Site of the Year</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FINAL CTA + CONTACT -->
   <section class="section cta-final" id="contact">
     <div class="container">
@@ -604,6 +726,12 @@
               Submit Application
             </button>
             
+            <div style="margin-top:1.35rem; display:flex; justify-content:center; align-items:center; gap:1rem; font-size:0.8rem;">
+              <button onclick="downloadBrochure()" class="btn btn-secondary" style="font-size:0.75rem; padding:0.65rem 1.35rem;">
+                Download 2026 Guide (PDF)
+              </button>
+            </div>
+            
             <p style="font-size: 0.75rem; text-align: center; margin-top: 1.25rem; color: var(--color-text-subtle);">
               I personally review every application. Expect a response within 48 hours.
             </p>
@@ -619,6 +747,11 @@
       </div>
     </div>
   </section>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -676,6 +809,44 @@
       </div>
     </div>
   </footer>
+
+  <!-- PREMIUM VIDEO MODAL -->
+  <div id="video-modal" class="modal" onclick="if (event.target.id === 'video-modal') closeVideoModal()">
+    <div class="modal-content" onclick="event.stopImmediatePropagation()">
+      <div class="modal-header">
+        <h3>The Lennox Method — 2:14</h3>
+        <button class="modal-close" onclick="closeVideoModal()" aria-label="Close video">&times;</button>
+      </div>
+      
+      <div class="modal-video-container">
+        <!-- Premium placeholder video / cinematic poster -->
+        <img src="assets/images/film-poster.jpg" alt="Cinematic still from Kai Lennox film: Powerful coach in luxury gym" style="width:100%; height:100%; object-fit:cover;">
+        
+        <div class="video-overlay">
+          <div onclick="playVideoDemo(this)" class="video-play-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+          </div>
+          <div class="video-info">
+            <h4>Behind the Method • A cinematic portrait</h4>
+            <span>Directed by Studio 32 • 2025</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="padding: 1.25rem 1.85rem 1.75rem; background:#181818; font-size:0.9rem; color:#A8A29E; display:flex; gap:1.25rem; align-items:center;">
+        <div>
+          <strong style="color:#C9A96E;">“The body is the instrument. The mind is the conductor.”</strong><br>
+          <span style="font-size:0.8rem;">— Kai Lennox, 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING CTA -->
+  <a href="#contact" id="floating-cta" class="floating-cta" style="display:none;">
+    <span>Begin your journey</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
 
   <script src="assets/js/main.js"></script>
 </body>

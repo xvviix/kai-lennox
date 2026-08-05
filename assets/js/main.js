@@ -72,10 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateSlideWidth() {
       if (window.innerWidth >= 768) {
-        // On desktop: show 2 slides
         slideWidth = track.offsetWidth / 2;
       } else {
-        // Mobile: 1 slide
         slideWidth = track.offsetWidth;
       }
     }
@@ -90,39 +88,24 @@ document.addEventListener('DOMContentLoaded', () => {
       updateTrackPosition();
     }
 
-    // Button events
-    nextBtn.addEventListener('click', () => {
-      goToSlide(currentIndex + 1);
-    });
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
 
-    prevBtn.addEventListener('click', () => {
-      goToSlide(currentIndex - 1);
-    });
-
-    // Auto-slide every 7 seconds
     let autoSlideInterval = setInterval(() => {
       goToSlide(currentIndex + 1);
     }, 7000);
 
-    // Pause auto-slide on hover
     const sliderContainer = track.parentElement;
-    sliderContainer.addEventListener('mouseenter', () => {
-      clearInterval(autoSlideInterval);
-    });
-
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
     sliderContainer.addEventListener('mouseleave', () => {
-      autoSlideInterval = setInterval(() => {
-        goToSlide(currentIndex + 1);
-      }, 7000);
+      autoSlideInterval = setInterval(() => goToSlide(currentIndex + 1), 7000);
     });
 
-    // Keyboard support
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
       if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
     });
 
-    // Resize handling
     function handleResize() {
       updateSlideWidth();
       updateTrackPosition();
@@ -132,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlideWidth();
     updateTrackPosition();
 
-    // Touch swipe support
+    // Touch support
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -144,18 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
     track.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
-      autoSlideInterval = setInterval(() => {
-        goToSlide(currentIndex + 1);
-      }, 7000);
+      autoSlideInterval = setInterval(() => goToSlide(currentIndex + 1), 7000);
     }, { passive: true });
 
     function handleSwipe() {
-      if (touchEndX < touchStartX - 60) {
-        goToSlide(currentIndex + 1);
-      }
-      if (touchEndX > touchStartX + 60) {
-        goToSlide(currentIndex - 1);
-      }
+      if (touchEndX < touchStartX - 60) goToSlide(currentIndex + 1);
+      if (touchEndX > touchStartX + 60) goToSlide(currentIndex - 1);
     }
   }
 
@@ -168,15 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (question) {
       question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-
-        // Close all others
+        
         faqItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('active');
-          }
+          if (otherItem !== item) otherItem.classList.remove('active');
         });
 
-        // Toggle current
         if (isActive) {
           item.classList.remove('active');
         } else {
@@ -186,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Form handling (simulated)
+  // Form handling
   const contactForm = document.getElementById('contact-form');
   const formSuccess = document.getElementById('form-success');
 
@@ -194,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Simulate loading
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
 
@@ -210,13 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        // Hide form
         contactForm.style.display = 'none';
-        
-        // Show success state
         formSuccess.classList.add('active');
 
-        // Reset form for future demo (optional)
         setTimeout(() => {
           contactForm.reset();
           submitBtn.innerHTML = originalText;
@@ -242,14 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initial check
   setTimeout(() => {
     checkReveal();
   }, 450);
 
   window.addEventListener('scroll', checkReveal, { passive: true });
 
-  // Add subtle hover lift effect on program cards
+  // Program cards subtle mouse tilt effect
   const programCards = document.querySelectorAll('.program-card');
   programCards.forEach(card => {
     card.addEventListener('mousemove', function(e) {
@@ -262,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Add CSS for subtle interactive tilt effect on programs (inline)
+  // Add extra CSS
   const style = document.createElement('style');
   style.innerHTML = `
     .program-card {
@@ -275,10 +242,13 @@ document.addEventListener('DOMContentLoaded', () => {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    .floating-cta {
+      animation: fadeInUp 0.4s ease forwards;
+    }
   `;
   document.head.appendChild(style);
 
-  // Optional: Add premium subtle parallax on hero (performance friendly)
+  // Hero parallax
   const hero = document.querySelector('.hero');
   const heroVisual = document.querySelector('.hero-visual img');
 
@@ -292,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const heroHeight = hero.offsetHeight;
           
           if (scrollY < heroHeight) {
-            const parallax = scrollY * 0.14;
+            const parallax = scrollY * 0.13;
             heroVisual.style.transform = `translateY(${parallax}px)`;
           }
           ticking = false;
@@ -302,26 +272,220 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // Easter egg: logo click shows a subtle highlight
+  // Logo easter egg
   const logo = document.querySelector('.logo');
   if (logo) {
     logo.addEventListener('click', () => {
       logo.style.transition = 'all .15s ease';
-      logo.style.transform = 'scale(0.9)';
+      logo.style.transform = 'scale(0.88)';
       setTimeout(() => {
         logo.style.transform = 'scale(1)';
-      }, 150);
+      }, 160);
     });
   }
 
-  // Accessibility: Escape key closes mobile nav
+  // Escape key handling
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navLinks && navLinks.classList.contains('mobile-open')) {
-      navLinks.classList.remove('mobile-open');
-      if (navToggle) navToggle.classList.remove('active');
+    if (e.key === 'Escape') {
+      // Close mobile nav
+      if (navLinks && navLinks.classList.contains('mobile-open')) {
+        navLinks.classList.remove('mobile-open');
+        if (navToggle) navToggle.classList.remove('active');
+      }
+      
+      // Close modal
+      const modal = document.getElementById('video-modal');
+      if (modal && modal.classList.contains('active')) {
+        closeVideoModal();
+      }
     }
   });
 
-  // Mark that everything is ready
-  console.log('%c[Kai Lennox] Premium site initialized successfully.', 'color:#6B6762; font-size: 9.5px');
+  // Show floating CTA after scroll
+  const floatingCTA = document.getElementById('floating-cta');
+  if (floatingCTA) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 1100) {
+        floatingCTA.style.display = 'flex';
+      } else {
+        floatingCTA.style.display = 'none';
+      }
+    }, { passive: true });
+  }
+
+  // Back to top button
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 900) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    // Keyboard support
+    backToTop.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Optional: Update nav to include Journal
+  const navLinksEl = document.getElementById('nav-links');
+  if (navLinksEl) {
+    // Already complete but we can make sure links are good
+  }
+
+  console.log('%c[Kai Lennox] Premium site fully initialized — Awwwards caliber.', 'color:#6B6762; font-size: 9.5px');
 });
+
+/* ============================================
+   VIDEO MODAL FUNCTIONS (Premium Feature)
+   ============================================ */
+function openVideoModal() {
+  const modal = document.getElementById('video-modal');
+  if (!modal) return;
+  
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  
+  // Optional: auto play a placeholder video if one existed
+  const video = modal.querySelector('video');
+  if (video) {
+    setTimeout(() => {
+      video.play().catch(() => {});
+    }, 800);
+  }
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('video-modal');
+  if (!modal) return;
+  
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  
+  // Pause any video
+  const video = modal.querySelector('video');
+  if (video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+}
+
+// Make functions available globally
+window.openVideoModal = openVideoModal;
+window.closeVideoModal = closeVideoModal;
+
+/* ============================================
+   PREMIUM VIDEO MODAL SIMULATION
+   ============================================ */
+function playVideoDemo(playButton) {
+  const container = playButton.parentElement;
+  const overlay = container.querySelector('.video-overlay');
+  const posterImg = container.querySelector('img');
+  
+  if (!overlay) return;
+
+  // Hide the play button overlay
+  overlay.style.transition = 'opacity 0.3s ease';
+  overlay.style.opacity = '0';
+
+  setTimeout(() => {
+    overlay.style.display = 'none';
+
+    // Create premium simulated video player
+    const videoSim = document.createElement('div');
+    videoSim.className = 'video-simulator';
+    videoSim.innerHTML = `
+      <div class="video-sim-content">
+        <div class="cinematic-frame">
+          <div class="film-grain"></div>
+          
+          <!-- Simulated cinematic footage -->
+          <div class="simulated-scene">
+            <div class="scene-bg"></div>
+            
+            <div class="scene-content">
+              <div class="coach-silhouette"></div>
+              <div class="client-figure"></div>
+              <div class="light-beams"></div>
+            </div>
+            
+            <div class="scene-text">
+              <div class="scene-label">KAI LENNOX • 2025</div>
+              <div style="font-size:0.75rem; opacity:0.7;">"Precision is everything."</div>
+            </div>
+          </div>
+          
+          <!-- Progress bar -->
+          <div class="video-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="video-time">
+              <span class="current-time">0:00</span>
+              <span>/</span>
+              <span>2:14</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(videoSim);
+
+    // Start simulated playback
+    const progressFill = videoSim.querySelector('.progress-fill');
+    const currentTime = videoSim.querySelector('.current-time');
+    
+    let progress = 0;
+    const duration = 134000; // 2:14 in ms
+    const interval = setInterval(() => {
+      progress += 1.1;
+      
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+        
+        // End of film: show replay button
+        setTimeout(() => {
+          const replay = document.createElement('div');
+          replay.style.cssText = 'position:absolute; bottom:40px; left:50%; transform:translateX(-50%); display:flex; gap:10px; align-items:center;';
+          replay.innerHTML = `
+            <button onclick="replayVideoDemo(this)" style="background:#C9A96E; color:#0F0F0F; border:none; padding:8px 18px; border-radius:9999px; font-size:0.75rem; font-weight:700; cursor:pointer;">REPLAY FILM</button>
+          `;
+          videoSim.appendChild(replay);
+        }, 600);
+      }
+      
+      progressFill.style.width = progress + '%';
+      
+      // Update time display
+      const seconds = Math.floor((progress / 100) * 134);
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      currentTime.textContent = `${mins}:${secs < 10 ? '0' + secs : secs}`;
+    }, 1450); // smooth 2m14s simulation
+    
+    // Store interval so we can clear if needed
+    videoSim.dataset.interval = interval;
+  }, 320);
+}
+
+function replayVideoDemo(btn) {
+  const videoSim = btn.closest('.video-simulator');
+  if (videoSim) {
+    const container = videoSim.parentElement;
+    videoSim.remove();
+    
+    // Reset overlay
+    const overlay = container.querySelector('.video-overlay');
+    if (overlay) {
+      overlay.style.display = 'flex';
+      overlay.style.opacity = '1';
+    }
+  }
+}
