@@ -315,7 +315,7 @@ img { max-width: 100%; display: block; }
   position: absolute;
   top: 0;
   right: 0;
-  width: 58%;
+  width: 40%;
   height: 100%;
   z-index: 1;
 }
@@ -324,17 +324,29 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.85) contrast(1.1);
+  filter: saturate(0.97) contrast(1.05);
 }
 
 .hero-overlay {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 58%;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #0F0F0F 8%, transparent 34%);
-  z-index: 1;
+  /* 
+    Extremely subtle left-edge vignette for text contrast.
+    Affects ONLY the extreme far-left ~4-6% of the image at most.
+    The vast majority of the hero portrait remains bright, uncovered, and fully visible.
+  */
+  background: linear-gradient(
+    to right,
+    rgba(15, 15, 15, 0.42) 0%,
+    rgba(15, 15, 15, 0.18) 2%,
+    rgba(15, 15, 15, 0.03) 4%,
+    transparent 6%
+  );
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* ABOUT */
@@ -1014,7 +1026,7 @@ img { max-width: 100%; display: block; }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .hero-visual, .hero-overlay { width: 52%; }
+  .hero-visual { width: 42%; }
 }
 
 @media (max-width: 900px) {
